@@ -1,17 +1,24 @@
 <template>
   <div>
-    <h1>{{ title }}</h1>
+    <add-blog> </add-blog>
   </div>
 </template>
 
 <script>
+ import addBlog from "./components/addBlog.vue";
 export default {
-  data() {
-    return {
-      title: "Shijil App",
-    };
+  components:{
+     'add-blog':addBlog
   },
+  data() {
+    return {};
+  },
+  methods: {},
 };
 </script>
 
-<style></style>
+<style scoped>
+body {
+  margin: 0;
+}
+</style>
