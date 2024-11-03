@@ -1,14 +1,15 @@
 <template>
   <div>
-    <add-blog> </add-blog>
+    <app-headerLink></app-headerLink>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
- import addBlog from "./components/addBlog.vue";
+import Header from "./components/HeaderPart.vue";
 export default {
-  components:{
-     'add-blog':addBlog
+  components: {
+    "app-headerLink": Header,
   },
   data() {
     return {};

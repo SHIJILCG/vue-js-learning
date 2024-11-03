@@ -1,7 +1,7 @@
 <template>
   <div id="add-blog">
     <h2>Add a New Blog Post</h2>
-    <form action="">
+    <form action="" v-if="!submitted">
       <label for="">Blog Title:</label>
       <input type="text" v-model.lazy="blog.title" required />
       <label for="">Blog Content:</label>
@@ -22,7 +22,11 @@
           {{ author }}
         </option>
       </select>
+      <button v-on:click.prevent="post">Add Blog</button>
     </form>
+    <div v-if="submitted">
+      <h3>Thanks for addding a post</h3>
+    </div>
     <div id="preview">
       <h3>Preview Blog</h3>
       <p>Blog title:{{ blog.title }}</p>
@@ -40,6 +44,8 @@
 </template>
 
 <script>
+import { db } from "@/firebaseConfig";
+import { collection, addDoc } from "firebase/firestore";
 export default {
   data() {
     return {
@@ -50,9 +56,30 @@ export default {
         author: "",
       },
       authors: ["shijil", "divin", "akhile", "rishi"],
+      submitted: false,
     };
   },
-  methods: {},
+  methods: {
+    post: async function () {
+      try {
+        const collectionRef = collection(db, "posts");
+        await addDoc(collectionRef, {
+          title: this.blog.title,
+          content: this.blog.content,
+        });
+        this.blog = {
+          title: "",
+          content: "",
+          categories: [],
+          author: "",
+        };
+        this.submitted = true;
+        console.log("Post added successfully!");
+      } catch {
+        console.log("Error adding post");
+      }
+    },
+  },
 };
 </script>
 
@@ -85,4 +112,5 @@ h3 {
 #checkboxes label {
   display: inline-block;
 }
+
 </style>
