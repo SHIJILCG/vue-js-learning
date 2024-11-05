@@ -13,9 +13,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# ignore
-.env
-
 # Editor directories and files
 .idea
 .vscode

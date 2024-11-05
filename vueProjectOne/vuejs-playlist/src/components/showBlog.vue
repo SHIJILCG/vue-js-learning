@@ -1,5 +1,5 @@
 <template>
-  <div v-theme:column="'narrow'" id="show-blogs">
+  <div id="show-blogs">
     <h1>All Blog Article</h1>
     <input type="text" v-model="search" placeholder="search blogs" />
     <div
@@ -10,7 +10,7 @@
       <router-link v-bind:to="'/blog/' + Blog.id">{{
         Blog.title | uppercase
       }}</router-link>
-      <article>{{ Blog.body | snippet }}</article>
+      <article>{{ Blog.content }}</article>
     </div>
   </div>
 </template>
@@ -29,30 +29,23 @@ export default {
   },
   methods: {},
   async created() {
-    const blogsCollection = collection(db, "posts"); 
+    const blogsCollection = collection(db, "posts");
     const snapshot = await getDocs(blogsCollection);
 
     this.Blogs = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
+    console.log(this.Blogs);
   },
   filters: {
     uppercase(value) {
       return value.toUpperCase();
     },
   },
-//   directives: {
-//     rainbow: {
-//       bind(el) {
-//         el.style.color = "#" + Math.random().toString().slice(2, 8);
-//       },
-//     },
-//   },
   mixins: [searchMixin],
 };
 </script>
-
 
 <style scoped>
 #show-blogs {

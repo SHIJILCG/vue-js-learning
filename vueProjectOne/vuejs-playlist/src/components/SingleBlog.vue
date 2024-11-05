@@ -1,11 +1,13 @@
 <template>
   <div id="single-blog">
     <h1>{{ blog.title }}</h1>
-    <article>{{ blog.body }}</article>
+    <article>{{ blog.content }}</article>
   </div>
 </template>
 
 <script>
+import { db } from "@/firebaseConfig";
+import { doc, getDoc } from "firebase/firestore";
 export default {
   data() {
     return {
@@ -13,10 +15,15 @@ export default {
       blog: {},
     };
   },
-  created() {
-    this.$http
-      .get(`https://jsonplaceholder.typicode.com/posts/${this.id}`)
-      .then((data) => (this.blog = data.body));
+  async created() {
+    const docRef = doc(db, "posts", this.id);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      console.log(docSnap.data());
+      this.blog = docSnap.data();
+    } else {
+      console.log("no data found");
+    }
   },
 };
 </script>

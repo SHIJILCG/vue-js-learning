@@ -8,11 +8,7 @@ Vue.use(VueResource);
 Vue.use(VueRouter);
 
 const router = new VueRouter({ routes: routes, mode: "history" });
-/////Filters
-
-Vue.filter("snippet", function (value) {
-  return value.slice(0, 100) + "...";
-});
+console.log(import.meta.env, "oioiopiopi");
 
 new Vue({
   el: "#app",
