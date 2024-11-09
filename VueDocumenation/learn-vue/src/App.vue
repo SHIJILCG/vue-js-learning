@@ -1,9 +1,9 @@
 <template>
-  <HomeViewTwo />
+  <SampleParentPage />
 </template>
 
 <script setup>
-import HomeViewTwo from "./views/HomeViewTwo.vue";
+import SampleParentPage from "./views/SampleParentPage.vue";
 </script>
 
 <style>
