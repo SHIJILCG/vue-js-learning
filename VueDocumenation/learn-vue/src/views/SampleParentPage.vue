@@ -17,21 +17,11 @@ const handleClick = (data) => {
       <template #content>
         <h2>This is a slote code</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-          facere? Doloremque eius magnam id totam est fugiat explicabo quis
-          nesciunt iure distinctio illo consequuntur, reprehenderit, officia
-          porro quod libero. Mollitia harum incidunt voluptate aliquam molestias
-          amet aperiam. Ex, aperiam, qui numquam iste ratione adipisci soluta
-          quibusdam eum exercitationem error blanditiis est, modi deleniti
-          mollitia non reiciendis ipsam tempore quia commodi nesciunt dolor rem.
-          Sunt corrupti eaque et maiores. Minima, consequatur dolore? Facere
-          sequi aperiam porro maxime vitae quae provident eveniet doloremque,
-          distinctio beatae esse, fugiat quasi, doloribus asperiores velit
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,tae esse, fugiat quasi, doloribus asperiores velit
           voluptatem hic enim vero qui eum! A nesciunt eius repellendus fugiat!
         </p>
       </template>
     </ChildTwo>
   </div>
 </template>
-
 <style scoped></style>
