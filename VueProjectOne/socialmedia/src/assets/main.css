@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: lightblue;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+}

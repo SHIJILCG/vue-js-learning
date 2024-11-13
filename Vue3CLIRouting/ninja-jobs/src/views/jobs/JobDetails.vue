@@ -11,7 +11,12 @@
 
 <script>
 export default {
-  props: ["id"],
+  props: {
+    id: {
+      type: Number,
+      requrired: true,
+    },
+  },
   data() {
     return {
       job: null,
