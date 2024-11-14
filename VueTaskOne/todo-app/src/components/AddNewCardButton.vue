@@ -1,11 +1,18 @@
 <template>
-  <div class="addnewcard">
+  <div class="addnewcard" @click="handlbuttonclik">
     <span>+</span>
     <p>Add a card</p>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const emit = defineEmits(["customEvent"]);
+
+
+const handlbuttonclik = () => {
+  emit("customEvent");
+};
+</script>
 
 <style scoped>
 .addnewcard {

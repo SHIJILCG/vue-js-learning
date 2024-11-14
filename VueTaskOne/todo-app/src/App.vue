@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import TodoCard from "./components/TodoCard.vue";
+import TodoContainer from "./components/TodoContainer.vue"
 </script>
 
 <template>
   <div class="app">
-    <TodoCard />
+    <TodoContainer />
   </div>
 </template>
 
