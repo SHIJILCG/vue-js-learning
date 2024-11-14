@@ -8,7 +8,6 @@
 <script lang="ts" setup>
 const emit = defineEmits(["customEvent"]);
 
-
 const handlbuttonclik = () => {
   emit("customEvent");
 };
@@ -23,6 +22,7 @@ const handlbuttonclik = () => {
   font-weight: 800;
   color: #b6b6b6;
   align-items: center;
+  cursor: pointer;
 }
 .addnewcard:hover {
   color: #707070;

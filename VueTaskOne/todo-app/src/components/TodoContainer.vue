@@ -54,6 +54,7 @@ const reverseTodoArr = computed(() => [...arrTodoCards.value].reverse());
 
 const handleNewTodoCard = (value: string) => {
   arrTodoCards.value.push({ id: arrTodoCards.value.length + 1, title: value });
+  isNewCard.value = false;
 };
 
 const handleEditTodoCard = (tocardDetails: CardType) => {

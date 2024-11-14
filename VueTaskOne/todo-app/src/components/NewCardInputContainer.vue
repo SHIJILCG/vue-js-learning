@@ -8,27 +8,30 @@
       ></textarea>
     </div>
     <div class="buttons">
-      <button @click="handleaddcardbutton">Add card</button>
+      <button @click="handleaddcardbutton" :disabled="!isinputHaveText">
+        Add card
+      </button>
       <span @click="handlCancelClick">+</span>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref} from "vue";
+import { computed, ref } from "vue";
 
 const emit = defineEmits(["customEvent", "handleNewcardClick"]);
 const inputtext = ref<string>("");
 
+const isinputHaveText = computed(() => {
+  return inputtext.value.length > 0 ? true : false;
+});
 
 const handlCancelClick = () => {
   emit("customEvent");
 };
 const handleaddcardbutton = () => {
-  if (inputtext.value !== "") {
-    emit("handleNewcardClick", inputtext.value);
-    inputtext.value = "";
-  }
+  emit("handleNewcardClick", inputtext.value);
+  inputtext.value = "";
 };
 </script>
 

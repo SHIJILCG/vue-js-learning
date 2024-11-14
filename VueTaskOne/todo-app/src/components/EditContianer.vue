@@ -26,7 +26,6 @@ const handlebuttonClick = () => {
 <style scoped>
 .editContainer{
    display: flex;
-   position: relative;
    flex-direction: column;
    gap: 10px;
 }
@@ -43,8 +42,6 @@ const handlebuttonClick = () => {
   flex: 1;
 }
 .save {
-  position: absolute;
-  bottom: -50px;
   background: rgb(27, 117, 190);
   padding: 8px 20px;
   border-radius: 8px;
