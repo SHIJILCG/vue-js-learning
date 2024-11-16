@@ -15,7 +15,7 @@ const handleButtonClick = () => {
   position: absolute;
   right: 0px;
   top: 40px;
-  background: rgb(119, 118, 118);
+  background: rgb(85, 85, 85);
   padding: 5px 10px;
   border-radius: 5px;
 }
