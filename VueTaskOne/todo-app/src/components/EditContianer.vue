@@ -11,23 +11,28 @@
 </template>
 
 <script lang="ts" setup>
+import type { CardType } from "@/types/cardtype";
 import { ref, toRefs } from "vue";
 
-const prop = defineProps<{ title: string; id: number }>();
-const { title, id } = toRefs(prop);
+const prop = defineProps<CardType>();
+const { title, id, isChecked } = toRefs(prop);
 const editedTitle = ref<string>(title.value);
 const emit = defineEmits(["handleSaveClick"]);
 
 const handlebuttonClick = () => {
-  emit("handleSaveClick", { title: editedTitle.value, id: id.value });
+  emit("handleSaveClick", {
+    title: editedTitle.value,
+    id: id.value,
+    isChecked: isChecked.value,
+  });
 };
 </script>
 
 <style scoped>
-.editContainer{
-   display: flex;
-   flex-direction: column;
-   gap: 10px;
+.editContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .editTextArea {
   background: rgb(71, 71, 71);

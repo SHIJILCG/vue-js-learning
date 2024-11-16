@@ -1,20 +1,27 @@
 <template>
   <div class="titlecard">
-    <p>{{ title }}</p>
+    <div class="cardinnerone">
+      <input type="checkbox" v-model="checkValue" />
+      <p>{{ title }}</p>
+    </div>
     <button @click="handButtonClick">✎</button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { CardType } from "@/types/cardtype";
-import { toRefs } from "vue";
+import { ref, toRefs } from "vue";
 
 const emit = defineEmits(["handleEditbuttonClick"]);
 const props = defineProps<CardType>();
-const { title, id } = toRefs(props);
-
+const { title, id, isChecked } = toRefs(props);
+const checkValue = ref<boolean>(isChecked.value);
 const handButtonClick = () => {
-  emit("handleEditbuttonClick", { title: title.value, id: id.value });
+  emit("handleEditbuttonClick", {
+    title: title.value,
+    id: id.value,
+    isChecked: checkValue.value,
+  });
 };
 </script>
 
@@ -34,5 +41,10 @@ const handButtonClick = () => {
 .titlecard button {
   transform: rotate(80deg);
   font-size: 20px;
+}
+.cardinnerone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 </style>
