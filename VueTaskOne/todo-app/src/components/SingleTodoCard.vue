@@ -26,6 +26,8 @@ const handButtonClick = () => {
 };
 
 
+console.log("yeehawww")
+
 watch(checkValue, () => {
   emit("handleCheckClick", {
     title: title.value,
