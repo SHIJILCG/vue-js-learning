@@ -21,6 +21,7 @@
             :id="card.id"
             :isChecked="card.isChecked"
             @handle-editbutton-click="handleEditTodoCard"
+            @handle-check-click="handleChangeTodoCard"
           />
         </template>
       </div>
@@ -49,7 +50,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, watchEffect } from "vue";
+import { computed, ref } from "vue";
 import AddNewCardButton from "./AddNewCardButton.vue";
 import NewCardInputContainer from "./NewCardInputContainer.vue";
 import type { CardType } from "@/types/cardtype";
@@ -63,10 +64,6 @@ const arrTodoCards = ref<CardType[]>([]);
 const editCardDetails = ref<null | CardType>(null);
 const reverseTodoArr = computed(() => [...arrTodoCards.value].reverse());
 
-watchEffect(() => {
-  console.log(arrTodoCards.value);
-});
-
 const handleNewTodoCard = (value: string) => {
   arrTodoCards.value.push({
     id: arrTodoCards.value.length + 1,
@@ -78,6 +75,7 @@ const handleNewTodoCard = (value: string) => {
 
 const handleEditTodoCard = (tocardDetails: CardType) => {
   editCardDetails.value = tocardDetails;
+  console.log(arrTodoCards.value);
 };
 
 const handleChangeTodoCard = (value: CardType) => {
@@ -86,6 +84,7 @@ const handleChangeTodoCard = (value: CardType) => {
   );
   arrTodoCards.value = editedArray;
   editCardDetails.value = null;
+  console.log(arrTodoCards.value);
 };
 
 const handleClearTodoArr = () => {

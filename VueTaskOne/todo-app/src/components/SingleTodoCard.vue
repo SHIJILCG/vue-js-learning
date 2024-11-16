@@ -10,19 +10,28 @@
 
 <script lang="ts" setup>
 import type { CardType } from "@/types/cardtype";
-import { ref, toRefs } from "vue";
+import { ref, toRefs, watch } from "vue";
 
-const emit = defineEmits(["handleEditbuttonClick"]);
+const emit = defineEmits(["handleEditbuttonClick", "handleCheckClick"]);
 const props = defineProps<CardType>();
 const { title, id, isChecked } = toRefs(props);
 const checkValue = ref<boolean>(isChecked.value);
+
 const handButtonClick = () => {
   emit("handleEditbuttonClick", {
     title: title.value,
     id: id.value,
-    isChecked: checkValue.value,
+    isChecked: isChecked.value,
   });
 };
+
+watch(checkValue, () => {
+  emit("handleCheckClick", {
+    title: title.value,
+    id: id.value,
+    isChecked: checkValue.value,
+  });
+});
 </script>
 
 <style scoped>
